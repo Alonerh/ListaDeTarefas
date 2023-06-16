@@ -12,35 +12,23 @@ import { ItemType } from '../../types/Item';
 
 type Item = {
     item: ItemType,
-    list: ItemType[],
     onChange: (id:number, done:boolean)=>void,
     onClick: (id:number)=>void
 }
 
-const ListItem = ({item, list, onChange, onClick}:Item) =>{
+const ListItem = ({item, onChange, onClick}:Item) =>{
     // Mark the task
-    const listLength = list[list.length];
-    const [done, setDone]=useState(item.done);
-
-    const handleCheck = ()=>{
-        if(done === false) {
-            setDone(true)
-        } else {
-            setDone(false)
-        }
-    };
-
     return (
         <Container>
             <LeftSide>
                 <Select
                     className='select'
                     type='checkbox'
+                    checked={item.done ? true : false}
                     onChange={e => onChange(item.id, e.target.checked)}
-                    onClick={handleCheck}
-                    />
-                <Text done={done ? 'true' : 'false'}>
-                    {item.name} = {item.id} = {item.done.toString()}
+                />
+                <Text done={item.done ? 'true' : 'false'} className='text'>
+                    {item.name}                                                                                                                                                                         
                 </Text>
             </LeftSide>
             <RightSide>

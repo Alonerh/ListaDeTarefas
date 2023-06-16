@@ -13,6 +13,11 @@ export const AddButton = styled.button`
     color: #fff;
     font-size: 40px;
     cursor: pointer;
+
+    &:hover {
+        background-color: #ccc;
+        color: #000;
+    }
 `;
 export const Add = styled.input`
     flex: 1;

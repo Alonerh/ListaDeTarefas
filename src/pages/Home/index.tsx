@@ -21,15 +21,12 @@ const Home = ()=> {
         }
         newList.push({
             name: taskName,
-            //id: list[list.length - 1].id + 1,
             id: listLength,
             done: false 
         });
         setList(newList);
-        console.log(list.length)
     }
-
-    const handleTaskChange = (id: number, done: boolean) => {
+    const handleTaskChange = (id: number, done: boolean) => {     
         let newList = [...list];
         for(let i in newList) {
           if(newList[i].id === id) {
@@ -37,7 +34,7 @@ const Home = ()=> {
           }
         }
         setList(newList);
-      }
+    }
     const handleDeleteTask = (id: number)=>{
         let newList = [...list];
         newList = newList.filter((item, index) => item.id !== id)
@@ -53,12 +50,11 @@ const Home = ()=> {
                     {list.map((item, index)=>(
                         <ListItem 
                             key={index}
-                            list={list}
                             item={item}
                             onChange={handleTaskChange}
                             onClick={handleDeleteTask}
                         />
-                    ))}
+                    ))}          
                 </C.ItemContainer>
             </C.Area>
         </C.Container>
